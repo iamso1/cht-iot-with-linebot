@@ -13,7 +13,7 @@ const botParser = bot.parser();
 //linebot的webhook
 app.post('/', botParser);
 
-app.get('/hello', function(req, res) {
+app.get('/', function(req, res) {
   res.send('hello world');
 });
 
