@@ -90,6 +90,8 @@ module.exports = {
 
    若不知道 app 的網址, 可以在 heroku 的 dashboard 右上角的 open app 開啟後得到網址, 外部即可使用此網址進行存取
 
+## Line 端
+
 ### 設定 webhook
 
 這步是要在 line developer 上設定
@@ -97,3 +99,7 @@ module.exports = {
 > 1. Use webhooks: 這個要先 enable
 > 2. Webhook URL: 完成第一步後再開啟這個, 並把 API 對外的網址輸入
 > 3. Auto-reply messages: 這個可以關掉, 不然都一直亂回覆
+
+## 其他參考資源
+
+1. Linebot https://www.npmjs.com/package/linebot
