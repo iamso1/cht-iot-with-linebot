@@ -14,6 +14,7 @@ const botParser = bot.parser();
 app.post('/', botParser);
 
 app.get('/', function(req, res) {
+  res.statusCode = 200;
   res.send('hello world');
 });
 
