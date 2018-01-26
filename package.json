@@ -1,0 +1,14 @@
+{
+  "name": "hello-cht-iot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Hsinhan <bmhiamso1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "linebot": "^1.3.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
