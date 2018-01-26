@@ -10,6 +10,7 @@
 
 ```js
 yarn install
+yarn start
 ```
 
 note:
