@@ -15,10 +15,29 @@ app.get('/', function(req, res) {
   res.send('hello world');
 });
 
+//新增device
 app.get('/device_add', async function(req, res) {
   const result = await deviceLogic.addDevice();
   console.log(result);
-  res.send('');
+  if (result.statusCode === 200)
+    res.send(`新增設備成功, 設備id為: ${result.info.id}`);
+  else res.send(`新增設備失敗, 失敗原因為: ${result.info.message}`);
+});
+
+//取得設備
+app.get('/device_get', async function(req, res) {
+  const result = await deviceLogic.getDevice('5387289519');
+  if (result.statusCode === 200)
+    res.send(`取得設備成功, 設備id為: ${result.info.key}`);
+  else res.send(`新增設備失敗, 失敗原因為: ${result.info.message}`);
+});
+
+//刪除設備
+app.get('/device_del', async function(req, res) {
+  const deviceId = '5385801655';
+  const result = await deviceLogic.delDevice(deviceId);
+  if (result.statusCode === 200) res.send(`刪除設備id:${deviceId}成功`);
+  else res.send(`刪除設備失敗`);
 });
 
 //這邊的 process.env.PORT  會對應到 heroku 的 80

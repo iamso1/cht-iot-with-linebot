@@ -1,6 +1,7 @@
 const axios = require('axios');
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 const iotConfig = require('../iot-setting');
+
 const addDeviceBody = {
   name: 'Hygrometer',
   desc: 'Your Hygrometer',
@@ -19,6 +20,7 @@ const addDeviceBody = {
     },
   ],
 };
+
 module.exports = {
   addDevice: () => {
     return axios
@@ -30,15 +32,56 @@ module.exports = {
       .then(resp => {
         return {
           statusCode: resp.status,
-          id: resp.data.id,
+          info: resp.data,
         };
       })
       .catch(resp => {
         return {
           statusCode: resp.response.status,
           statusText: resp.response.statusText,
-          status: resp.response.data.status,
-          message: resp.response.data.message,
+          info: resp.response.data,
+        };
+      });
+  },
+  getDevice: device_id => {
+    return axios
+      .get(`http://iot.cht.com.tw/iot/v1/device/${device_id}`, {
+        headers: {
+          CK: iotConfig.projectKey,
+        },
+      })
+      .then(resp => {
+        return {
+          statusCode: resp.status,
+          info: resp.data,
+        };
+      })
+      .catch(resp => {
+        return {
+          statusCode: resp.response.status,
+          statusText: resp.response.statusText,
+          info: resp.response.data,
+        };
+      });
+  },
+  delDevice: device_id => {
+    return axios
+      .delete(`http://iot.cht.com.tw/iot/v1/device/${device_id}`, {
+        headers: {
+          CK: iotConfig.projectKey,
+        },
+      })
+      .then(resp => {
+        return {
+          statusCode: resp.status,
+          info: resp.data,
+        };
+      })
+      .catch(resp => {
+        return {
+          statusCode: resp.response.status,
+          statusText: resp.response.statusText,
+          info: resp.response.data,
         };
       });
   },
